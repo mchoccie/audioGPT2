@@ -24,7 +24,7 @@ FERNET_KEY = os.getenv('FERNET_KEY')
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+DEBUG = False
 
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024
 # Quick-start development settings - unsuitable for production
@@ -114,12 +114,12 @@ WSGI_APPLICATION = 'audio_gpt.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('RDS_DB_NAME'),
-        'USER': os.getenv('RDS_DB_USER'),
-        'PASSWORD': os.getenv('RDS_DB_PASSWORD'),
-        'HOST': os.getenv('RDS_DB_HOST'),
-        'PORT': os.getenv('RDS_DB_PORT', '5432'),
+        'ENGINE': "django.db.backends.postgresql_psycopg2",
+        'NAME': os.environ['RDS_DB_NAME'],
+        'USER': os.environ['RDS_DB_USER'],
+        'PASSWORD': os.environ['RDS_DB_PASSWORD'],
+        'HOST': os.environ['RDS_DB_HOST'],
+        'PORT': os.environ['RDS_DB_PORT'],
     }
 }
 
